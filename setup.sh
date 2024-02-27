@@ -83,7 +83,9 @@ conda create -n py311 python=3.11
 echo "installing apps with Cask... ⏳"
 brew install ${apps[@]}
 
-open /Applications/Alfred\ 5.app
+brew install powerlevel10k
+echo "source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
+
 
 brew cleanup
 # ------- Apps -------
