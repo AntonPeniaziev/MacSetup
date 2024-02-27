@@ -76,22 +76,8 @@ apps=(
 
 echo "installing python base envs ⏳"
 
-cat << 'EOF' >> ~/.zshrc
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="\$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ \$? -eq 0 ]; then
-    eval "\$__conda_setup"
-else
-    if [ -f "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-        . "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh"
-    else
-        export PATH="/usr/local/Caskroom/miniconda/base/bin:\$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-EOF
+# conda 'No action taken.' issue handling
+echo ". /usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh" >>~/.zshrc
 
 
 conda create -n py38 python=3.8
