@@ -51,9 +51,6 @@ echo "Cleaning up brew 🧹"
 brew cleanup
 
 # ------- Apps -------
-echo "Installing homebrew cask 🧙‍♂️"
-brew install homebrew/cask
-
 apps=(
   alfred
   bettertouchtool
@@ -84,7 +81,7 @@ conda create -n py311 python=3.11
 # Install apps to /Applications
 # Default is: /Users/$user/Applications
 echo "installing apps with Cask... ⏳"
-brew install --cask --appdir="/Applications" ${apps[@]}
+brew install ${apps[@]}
 
 open /Applications/Alfred\ 5.app
 
@@ -111,20 +108,14 @@ defaults write com.apple.Terminal "Startup Window Settings" -string "Pro"
 #"Setting screenshot format to PNG 📸"
 # defaults write com.apple.screencapture type -string "png"
 
+
+defaults write com.apple.dock magnification -bool false
+defaults write com.apple.dock tilesize -int 38
+killall Dock
+
 # ------- Mac Settings -------
 
 killall Finder
 
-# ------- Advertisment -------
-echo "Done! 🥳"
-echo "Thank you for using my script! 🙏 Feel free to subscribe to our YouTube channel! It would be so 
-cool! 😊"
 
-while true; do
-    read -p "Do you want me to open my YouTube Channel for you? 🎥 (y/n) " yn
-    case $yn in
-        [Yy]* ) open -a Safari https://www.youtube.com/channel/UChXpovO__JiZrbcfTDFt39w?sub_confirmation=1; exit;;
-        [Nn]* ) exit;;
-        * ) echo "Please answer yes or no.";;
-    esac
-done
+
